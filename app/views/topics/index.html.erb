@@ -1,0 +1,17 @@
+<h1>Topics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= link_to topic.name, topic %>()</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

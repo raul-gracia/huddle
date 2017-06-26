@@ -14,11 +14,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'haml', '~> 5.0', '>= 5.0.1'
+gem 'haml-rails', '~> 1.0'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 
 gem 'devise', '~> 4.3'
 

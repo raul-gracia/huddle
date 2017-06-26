@@ -13,4 +13,6 @@
  *= require_self
  *= require font-awesome
  *= require style
+ *= require select2
+ *= require select2-bootstrap
  */

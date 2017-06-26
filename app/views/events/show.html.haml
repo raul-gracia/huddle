@@ -1,0 +1,18 @@
+%p
+  %b Name:
+  = @event.name
+%p
+  %b Date:
+  = @event.date
+%p
+  %b Start time:
+  = @event.start_time
+%p
+  %b End time:
+  = @event.end_time
+%p
+  %b Place:
+  = @event.place
+%p
+  %b Topics:
+  = @event.topics.map(&:name).join(', ')

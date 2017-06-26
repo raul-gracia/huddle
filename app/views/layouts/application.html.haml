@@ -18,9 +18,9 @@
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => "#"} Events
+              = link_to 'Events', events_path
             %li
-              %a{:href => "#about"} Topics
+              = link_to 'Topics', topics_path
           %ul.nav.navbar-nav.navbar-right
             - if current_user
               %li.dropdown
@@ -43,7 +43,7 @@
                 = link_to 'Log in', new_user_session_path
               %li
                 = link_to 'Register', new_user_registration_path
-    - if current_page?(controller: '/events', action: 'index')
+    - if params[:controller] == 'events' && params[:action] == 'index'
       .row.search-container
         .col-md-12
           %h2 Search
