@@ -1,0 +1,48 @@
+// Google Fonts
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+
+// Bootstrap
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+@import 'variables';
+
+body {
+  padding-top: 66px;
+  font-family: 'Open Sans';
+}
+
+#main-nav {
+  padding: 16px;
+  font-size: 16px;
+  background-color: white;
+
+  .navbar-brand {
+    font-family: 'Pacifico', cursive;
+    font-size: 33px;
+    color: $main-color;
+  }
+
+  .active > a {
+    background-color: white;
+  }
+  .open > a {
+    background-color: white;
+  }
+}
+
+.search-container {
+  padding: 20px;
+  background-color: $main-color;
+  color: white;
+  h2 {
+    text-align: center;
+    font-weight: bolder;
+  }
+}
+
+.highlight {
+  color: $main-color;
+}
