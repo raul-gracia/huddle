@@ -18,36 +18,41 @@
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => "#"} Home
+              %a{:href => "#"} Events
             %li
-              %a{:href => "#about"} About
-            %li
-              %a{:href => "#contact"} Contact
+              %a{:href => "#about"} Topics
           %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              %a.dropdown-toggle.big{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                %i.highlight.fa.fa-user-circle{"aria-hidden" => "true"}
-                User Name
-                %span.caret
-              %ul.dropdown-menu
-                %li
-                  %a{:href => "#"} Action
-                %li
-                  %a{:href => "#"} Another action
-                %li
-                  %a{:href => "#"} Something else here
-                %li.divider{:role => "separator"}
-                %li.dropdown-header Nav header
-                %li
-                  %a{:href => "#"} Separated link
-                %li
-                  %a{:href => "#"} One more separated link
-        / /.nav-collapse
-    - if current_page?(controller: 'events', action: 'index')
+            - if current_user
+              %li.dropdown
+                %a.dropdown-toggle.big{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  %i.highlight.fa.fa-user-circle{"aria-hidden" => "true"}
+                  = current_user.name.capitalize
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to 'My Account', edit_user_registration_path
+                  %li
+                    %a{:href => "#"} My Events
+                  %li
+                    %a{:href => "#"} My Saved Searches
+                  %li.divider{:role => "separator"}
+                  %li
+                    = link_to 'Logout', destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to 'Log in', new_user_session_path
+              %li
+                = link_to 'Register', new_user_registration_path
+    - if current_page?(controller: '/events', action: 'index')
       .row.search-container
         .col-md-12
           %h2 Search
     .container
-      = @controller
-      = @action
+      - if notice || alert
+        .row
+          .col-md-12.alerts-container
+            - if notice
+              %p.alert.alert-info= notice
+            - if alert
+              %p.alert.alert-danger= alert
       = yield

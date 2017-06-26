@@ -10,8 +10,12 @@
 @import 'variables';
 
 body {
-  padding-top: 66px;
+  padding-top: 83px;
   font-family: 'Open Sans';
+}
+
+.alerts-container {
+  padding-top: 20px;
 }
 
 #main-nav {
@@ -40,6 +44,26 @@ body {
   h2 {
     text-align: center;
     font-weight: bolder;
+  }
+}
+
+.form-box {
+  padding: 20px;
+  margin-top: 50px;
+  background-color: $main-color;
+  color: white;
+  h2 {
+    text-align: center;
+    font-weight: bolder;
+  }
+  a {
+    color: white;
+  }
+  form {
+    padding: 20px;
+  }
+  .help-block {
+    color: white;
   }
 }
 
