@@ -1,0 +1,39 @@
+.row.search-container
+  .col-md-8.col-md-offset-2
+    %h2 Filter Events
+    = form_for :search, url: events_path, method: :get do |f|
+      .search-box
+        .row
+          .col-md-3
+            = f.label :city
+          .col-md-2
+            = f.label :start_time
+          .col-md-2
+            = f.label :end_time
+          .col-md-4
+            = f.label :topics
+        .row
+          .col-md-3
+            = f.text_field :city, value: params[:search]['city']
+          .col-md-2
+            = f.time_select :start_time, minute_step: 15, default: {:hour => '00', :minute => '00'}
+          .col-md-2
+            = f.time_select :end_time, minute_step: 15, default: {:hour => '23', :minute => '45'}
+          .col-md-4
+            = f.select :topics, options_from_collection_for_select(Topic.all, :id, :name, params[:search]['topics']), {}, multiple: true
+        %br
+        .row
+          .col-md-2.col-md-offset-3
+            = f.submit "Filter Events", class: 'btn btn-default'
+          .col-md-2
+            - if current_user
+              = link_to 'Save Search',events_save_search_path, class: 'btn btn-default'
+            - else
+              = link_to 'Login to Save Search', events_save_search_path, class: 'btn btn-default'
+
+
+
+:javascript
+  $('#search_topics').select2({
+    theme: 'bootstrap'
+  });

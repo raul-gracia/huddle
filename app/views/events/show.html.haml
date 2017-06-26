@@ -11,8 +11,8 @@
   %b End time:
   = @event.end_time
 %p
-  %b Place:
-  = @event.place
+  %b Address:
+  = @event.full_address
 %p
   %b Topics:
   = @event.topics.map(&:name).join(', ')

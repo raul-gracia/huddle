@@ -7,13 +7,13 @@
         .panel-heading= link_to event.name, event
         .panel-body
           %div{style: 'float: right'}
-            = image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{URI.encode(event.place)}&zoom=13&size=200x100&maptype=roadmap&markers=color:red|#{URI.encode(event.place)}&key=AIzaSyD0iubEIzOdGbgtk7CxCyEW8tGs-ZgG-JA"
+            = image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{URI.encode(event.full_address)}&zoom=13&size=200x100&maptype=roadmap&markers=color:red|#{URI.encode(event.full_address)}&key=AIzaSyD0iubEIzOdGbgtk7CxCyEW8tGs-ZgG-JA"
           = event.date.strftime('%d/%m/%Y')
           %br
           From: #{event.start_time.strftime('%H:%M')}
           %br
           To: #{event.end_time.strftime('%H:%M')}
-          %p= event.place
+          %p= event.full_address
         .panel-footer
           Topics:
           - event.topics.each do |topic|

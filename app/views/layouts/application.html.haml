@@ -44,9 +44,7 @@
               %li
                 = link_to 'Register', new_user_registration_path
     - if params[:controller] == 'events' && params[:action] == 'index'
-      .row.search-container
-        .col-md-12
-          %h2 Search
+      = render partial: 'events/search'
     .container
       - if notice || alert
         .row

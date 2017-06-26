@@ -13,19 +13,30 @@ end
 
 Event.destroy_all
 Event.create!(
-  name: 'Barcelona Ruby User Group',
-  date: 10.days.from_now,
+  name:       'Barcelona Ruby User Group',
+  date:       10.days.from_now,
   start_time: '18:00',
-  end_time: '20:00',
-  place: 'Carrer de Pujades, 176, 08005, Barcelona',
-  topics: Topic.all.first(2)
+  end_time:   '20:00',
+  address:    'Carrer de Pujades, 176',
+  postcode:   '08005',
+  city:       'Barcelona',
+  country:    'Spain',
+  topics:     Topic.all.first(2)
 )
 
 Event.create!(
-  name: 'Javascript Meetup',
-  date: 1.month.from_now,
+  name:       'Javascript Meetup',
+  date:       1.month.from_now,
   start_time: '21:00',
-  end_time: '21:30',
-  place: 'Carrer de Muntaner, 237, 08021, Barcelona',
-  topics: Topic.all.last(3)
+  end_time:   '21:30',
+  address:    'Carrer de Muntaner, 237',
+  postcode:   '08021',
+  city:       'Barcelona',
+  country:    'Spain',
+  topics:     Topic.all.last(3)
 )
+
+User.destroy_all
+User.create!(email: 'user@example.com', password: '123456', name: 'User')
+
+
