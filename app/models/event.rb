@@ -16,4 +16,8 @@ class Event < ApplicationRecord
     results = results.where('city = ?', saved_search.city) if saved_search.city.present?
     results
   end
+
+  after_create do |event|
+    SavedSearchCheckerJob.perform_later(event)
+  end
 end

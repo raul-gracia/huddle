@@ -1,24 +1,34 @@
-# README
+# Huddle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Events List](/screenshot-events.png?raw=true "Events List")
+![Saved Searches](/screenshot-searches.png?raw=true "Saved Searches")
 
-Things you may want to cover:
 
-* Ruby version
+## Setup
 
-* System dependencies
+Clone this repo and run
 
-* Configuration
+`bin/setup`
 
-* Database creation
+## Requirements
 
-* Database initialization
+- Ruby 2.4.1
+- Rails 5.1.1
+- Postgresql
 
-* How to run the test suite
+##  Tests
 
-* Services (job queues, cache servers, search engines, etc.)
+to run the tests:
 
-* Deployment instructions
+`bundle exec rspec`
 
-* ...
+
+### To create a new event that will trigger a new mail notification
+
+Log in with username `user@example.com` and password `123456`
+
+Then run this command:
+
+```
+be rails runner "Event.create!(name: 'Event', date: Date.today, start_time: '20:00', end_time: '21:00', city: 'Madrid', address: 'address', postcode: '50000', country: 'Spain', topics: [Topic.find_by(name: 'Ruby'), Topic.find_by(name: 'Rails'])"
+```

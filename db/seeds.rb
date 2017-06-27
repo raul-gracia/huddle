@@ -37,6 +37,10 @@ Event.create!(
 )
 
 User.destroy_all
-User.create!(email: 'user@example.com', password: '123456', name: 'User')
+u = User.create!(email: 'user@example.com', password: '123456', name: 'User')
 
+
+SavedSearches.destroy_all
+u.saved_searches.create(name: 'Barcelona Js', city: 'Barcelona', start_time: '18:00', end_time: '21:00', topics: [Topic.find_by(name: 'Javascript')])
+u.saved_searches.create(name: 'Madrid.rb', city: 'Madrid', start_time: '17:00', end_time: '23:00', topics: [Topic.find_by(name: 'Ruby'), Topic.find_by(name: 'Rails')])
 

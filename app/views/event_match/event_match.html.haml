@@ -1,0 +1,6 @@
+%h2 A new Event match your one of your saved Searches!
+
+%p
+  Hello #{@user.name}, a new event #{@event.name} matches your search #{@search.name}
+
+%p Go #{link_to 'View Event', event_url(@event)}
