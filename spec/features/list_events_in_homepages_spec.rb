@@ -7,6 +7,6 @@ feature "show a list of events in homepage" do
   scenario "a logged out user visit the home page" do
     visit root_path
 
-    expect(page).to have_content('Events')
+    expect(page).to have_css('h1', text: 'Events')
   end
 end
