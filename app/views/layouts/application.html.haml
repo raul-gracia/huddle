@@ -32,9 +32,7 @@
                   %li
                     = link_to 'My Account', edit_user_registration_path
                   %li
-                    %a{:href => "#"} My Events
-                  %li
-                    %a{:href => "#"} My Saved Searches
+                    = link_to 'My Saved Searches', saved_searches_path
                   %li.divider{:role => "separator"}
                   %li
                     = link_to 'Logout', destroy_user_session_path, method: :delete
@@ -54,3 +52,34 @@
             - if alert
               %p.alert.alert-danger= alert
       = yield
+
+
+:javascript
+  new Noty({
+    type: 'warning',
+    layout: 'topRight',
+    theme: 'mint',
+    text: 'Interactive example',
+    timeout: 5000,
+    progressBar: true,
+    closeWith: ['click', 'button'],
+    animation: {
+      open: 'noty_effects_open',
+      close: 'noty_effects_close'
+    },
+    id: false,
+    force: false,
+    killer: false,
+    queue: 'global',
+    container: false,
+    buttons: [],
+    sounds: {
+      sources: [],
+      volume: 1,
+      conditions: []
+    },
+    titleCount: {
+      conditions: []
+    },
+    modal: false
+  }).show();

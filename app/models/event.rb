@@ -7,7 +7,13 @@ class Event < ApplicationRecord
     [address, postcode, city, country].join(', ')
   end
 
-  def self.filter_results(params)
-    self.all.where('city = ? AND start_time >= ? AND end_time <= ?', params[:city], params[:start_time].strftime('%T'), params[:end_time].strftime('%T'))
+  def self.filter_results(saved_search)
+    results = self.left_joins(:topics).includes(:topics)
+      .where('start_time >= ? AND end_time <= ?', saved_search.start_time_formatted, saved_search.end_time_formatted)
+      .distinct
+
+    results = results.where(topics: {id: saved_search.topic_ids}) if saved_search.topics.any?
+    results = results.where('city = ?', saved_search.city) if saved_search.city.present?
+    results
   end
 end

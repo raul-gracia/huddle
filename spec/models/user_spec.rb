@@ -13,8 +13,6 @@ describe User do
   end
 
   describe 'has relationships' do
-    #it { should have_many(:companies) }
-    #it { should have_many(:contacts).through(:companies) }
-    #it { should have_many(:activities).through(:contacts) }
+    it { should have_many(:saved_searches) }
   end
 end

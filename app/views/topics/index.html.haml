@@ -1,0 +1,11 @@
+%h1 Topics
+%table
+  %thead
+    %tr
+      %th Name
+  %tbody
+    - @topics.each do |topic|
+      %tr
+        %td
+          = link_to topic.name, topic
+          (#{topic.events.count} #{'Event'.pluralize(topic.events.count)})

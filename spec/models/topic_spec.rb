@@ -12,5 +12,6 @@ describe Topic do
 
   describe 'has relationships' do
     it { should have_and_belong_to_many(:events) }
+    it { should have_and_belong_to_many(:saved_searches) }
   end
 end

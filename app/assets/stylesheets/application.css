@@ -15,4 +15,5 @@
  *= require style
  *= require select2
  *= require select2-bootstrap
+ *= require noty/lib/noty
  */

@@ -15,4 +15,5 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require select2
+//= require noty/lib/noty
 //= require_tree .

@@ -14,22 +14,22 @@
             = f.label :topics
         .row
           .col-md-3
-            = f.text_field :city, value: params[:search]['city']
+            = f.text_field :city, value: @search.city
           .col-md-2
-            = f.time_select :start_time, minute_step: 15, default: {:hour => '00', :minute => '00'}
+            = f.time_select :start_time, minute_step: 15, default: @search.start_time
           .col-md-2
-            = f.time_select :end_time, minute_step: 15, default: {:hour => '23', :minute => '45'}
+            = f.time_select :end_time, minute_step: 15, default: @search.end_time
           .col-md-4
-            = f.select :topics, options_from_collection_for_select(Topic.all, :id, :name, params[:search]['topics']), {}, multiple: true
+            = f.select :topics, options_from_collection_for_select(Topic.all, :id, :name, @search.topic_ids), {}, multiple: true
         %br
         .row
           .col-md-2.col-md-offset-3
             = f.submit "Filter Events", class: 'btn btn-default'
           .col-md-2
             - if current_user
-              = link_to 'Save Search',events_save_search_path, class: 'btn btn-default'
+              = link_to 'Save Search',saved_searches_path, class: 'btn btn-default'
             - else
-              = link_to 'Login to Save Search', events_save_search_path, class: 'btn btn-default'
+              = link_to 'Login to Save Search', saved_searches_path, class: 'btn btn-default'
 
 
 

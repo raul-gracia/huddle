@@ -1,0 +1,50 @@
+.row.saved-search-container
+  .col-md-8.col-md-offset-2
+    - if @saved_search.persisted?
+      %h2 Edit Search
+    - else
+      %h2 New Search
+    = form_for @saved_search do |f|
+      - if @saved_search.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@saved_search.errors.count, "error")} prohibited this saved_search from being saved:"
+          %ul
+            - @saved_search.errors.full_messages.each do |message|
+              %li= message
+      .saved-search-box
+        .row
+          .col-md-11
+            = f.label :name
+        .row
+          .col-md-11
+            = f.text_field :name, class: 'form-control'
+            %br
+        .row
+          .col-md-3
+            = f.label :city
+          .col-md-2
+            = f.label :start_time
+          .col-md-2
+            = f.label :end_time
+          .col-md-4
+            = f.label :topics
+        .row
+          .col-md-3
+            = f.text_field :city, class: 'form-control'
+          .col-md-2.pd5
+            = f.time_select :start_time, minute_step: 15, class: 'form-control'
+          .col-md-2.pd5
+            = f.time_select :end_time, minute_step: 15, class: 'form-control'
+          .col-md-4
+            = f.select :topics, options_from_collection_for_select(Topic.all, :id, :name, @saved_search.topic_ids), {}, multiple: true
+        %br
+        .row
+          .col-md-2.col-md-offset-4
+            = f.submit class: 'btn btn-default'
+
+
+
+:javascript
+  $('#saved_search_topics').select2({
+    theme: 'bootstrap'
+  });

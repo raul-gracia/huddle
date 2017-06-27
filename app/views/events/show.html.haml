@@ -1,18 +1,4 @@
-%p
-  %b Name:
-  = @event.name
-%p
-  %b Date:
-  = @event.date
-%p
-  %b Start time:
-  = @event.start_time
-%p
-  %b End time:
-  = @event.end_time
-%p
-  %b Address:
-  = @event.full_address
-%p
-  %b Topics:
-  = @event.topics.map(&:name).join(', ')
+%br
+.row
+  .col-md-8.col-md-offset-2
+    = render @event

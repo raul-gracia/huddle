@@ -1,5 +1,7 @@
 {
   "name": "huddle",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "noty": "^3.1.0"
+  }
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626064259) do
+ActiveRecord::Schema.define(version: 20170626174443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,24 @@ ActiveRecord::Schema.define(version: 20170626064259) do
     t.index ["topic_id"], name: "index_events_topics_on_topic_id"
   end
 
+  create_table "saved_searches", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_saved_searches_on_user_id"
+  end
+
+  create_table "saved_searches_topics", force: :cascade do |t|
+    t.bigint "saved_search_id"
+    t.bigint "topic_id"
+    t.index ["saved_search_id"], name: "index_saved_searches_topics_on_saved_search_id"
+    t.index ["topic_id"], name: "index_saved_searches_topics_on_topic_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -54,4 +72,7 @@ ActiveRecord::Schema.define(version: 20170626064259) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "saved_searches", "users"
+  add_foreign_key "saved_searches_topics", "saved_searches"
+  add_foreign_key "saved_searches_topics", "topics"
 end
